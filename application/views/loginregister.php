@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,125 +7,131 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Login &amp; Register Templates</title>
+        <title>Where Am I?</title>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/form-elements.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        .login-page {
+          width: 360px;
+          padding: 8% 0 0;
+          margin: auto;
+        }
+        .form {
+          position: relative;
+          z-index: 1;
+          background: #FFFFFF;
+          max-width: 360px;
+          margin: 0 auto 100px;
+          padding: 45px;
+          text-align: center;
+          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        .form input {
+          font-family: "Roboto", sans-serif;
+          outline: 0;
+          background: #f2f2f2;
+          width: 100%;
+          border: 0;
+          margin: 0 0 15px;
+          padding: 15px;
+          box-sizing: border-box;
+          font-size: 14px;
+        }
+        .form button {
+          font-family: "Roboto", sans-serif;
+          text-transform: uppercase;
+          outline: 0;
+          background: #4CAF50;
+          width: 100%;
+          border: 0;
+          padding: 15px;
+          color: #FFFFFF;
+          font-size: 14px;
+          -webkit-transition: all 0.3 ease;
+          transition: all 0.3 ease;
+          cursor: pointer;
+        }
+        .form button:hover,.form button:active,.form button:focus {
+          background: #43A047;
+        }
+        .form .message {
+          margin: 15px 0 0;
+          color: #b3b3b3;
+          font-size: 12px;
+        }
+        .form .message a {
+          color: #4CAF50;
+          text-decoration: none;
+        }
+        .form .register-form {
+          display: none;
+        }
+        .container {
+          position: relative;
+          z-index: 1;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+        .container:before, .container:after {
+          content: "";
+          display: block;
+          clear: both;
+        }
+        .container .info {
+          margin: 50px auto;
+          text-align: center;
+        }
+        .container .info h1 {
+          margin: 0 0 15px;
+          padding: 0;
+          font-size: 36px;
+          font-weight: 300;
+          color: #1a1a1a;
+        }
+        .container .info span {
+          color: #4d4d4d;
+          font-size: 12px;
+        }
+        .container .info span a {
+          color: #000000;
+          text-decoration: none;
+        }
+        .container .info span .fa {
+          color: #EF3B3A;
+        }
+        body {
+          background: #76b852; /* fallback for old browsers */
+          background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+          background: -moz-linear-gradient(right, #76b852, #8DC26F);
+          background: -o-linear-gradient(right, #76b852, #8DC26F);
+          background: linear-gradient(to left, #76b852, #8DC26F);
+          font-family: "Roboto", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;      
+        }
+        </style>
 
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
     </head>
 
     <body>
+    <div class="login-page">  
+      <div class="form">
+         <form role="form" action="<?php echo site_url('auth/login') ?>" method="post" class="login-form">
+          <input type="text" name="login-username" placeholder="Username..." class="form-username form-control" id="login-username">
+          <input type="password" name="login-password" placeholder="Password..." class="form-password form-control" id="login-password">
+          <button>login</button>
+        </form>
+      </div>
+    </div>
 
-        <!-- Top content -->
-        <div class="top-content">
-        	
-            <div class="inner-bg">
-                <div class="container">     
-                    <div class="row">
-                        <div class="col-sm-5">
-                        	
-                        	<div class="form-box">
-	                        	<div class="form-top">
-	                        		<div class="form-top-left">
-	                        			<h3>Login to our site</h3>
-	                            		<p>Enter username and password to log on:</p>
-	                        		</div>
-	                        		<div class="form-top-right">
-	                        			<i class="fa fa-lock"></i>
-	                        		</div>
-	                            </div>
-	                            <div class="form-bottom">
-				                    <form role="form" action="<?php echo site_url('auth/login') ?>" method="post" class="login-form">
-				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-username">Username</label>
-				                        	<input type="text" name="login-username" placeholder="Username..." class="form-username form-control" id="login-username">
-				                        </div>
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="login-password" placeholder="Password..." class="form-password form-control" id="login-password">
-				                        </div>
-				                        <button type="submit" class="btn">Sign in!</button>
-				                    </form>
-			                    </div>
-		                    </div>
-                        </div>
-                        
-                        <div class="col-sm-1 middle-border"></div>
-                        <div class="col-sm-1"></div>
-                        	
-                        <div class="col-sm-5">
-                        	
-                        	<div class="form-box">
-                        		<div class="form-top">
-	                        		<div class="form-top-left">
-	                        			<h3>Sign up now</h3>
-	                            		<p>Fill in the form below to get instant access:</p>
-	                        		</div>
-	                        		<div class="form-top-right">
-	                        			<i class="fa fa-pencil"></i>
-	                        		</div>
-	                            </div>
-	                            <div class="form-bottom">
-				                    <form role="form" method="post" action="<?php echo site_url('auth/register') ?>" class="registration-form">
-				                    	<div class="form-group">
-				                    		<label class="sr-only" for="form-first-name">Full Name</label>
-				                        	<input type="text" name="form-name" placeholder="Full name..." class="form-first-name form-control" id="form-name">
-				                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">User Name</label>
-                                            <input type="text" name="form-first-name" placeholder="User name..." class="form-user-name form-control" id="form-user-name">
-                                        </div>    
-				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="form-password" placeholder="" class="form-password form-control" id="form-password">
-				                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-password">Re-Enter Password</label>
-                                            <input type="password" name="confirmation" placeholder="" class="form-password form-control" id="confirmation">
-                                        </div>
-				                        <button type="submit" class="btn">Sign me up!</button>
-				                    </form>
-			                    </div>
-                        	</div>
-                        	
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-
-        <!-- Footer -->
-
-        <!-- Javascript -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
-
+    <script type="text/javascript">
+          $('.message a').click(function(){
+                     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+            });
+    </script>
     </body>
 
 </html>

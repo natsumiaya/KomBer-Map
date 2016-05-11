@@ -26,6 +26,10 @@
 		<!----webfonts---->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700' rel='stylesheet' type='text/css'>
 		<!----//webfonts---->
+		<!--Google Maps-->
+		<script
+	        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGJ9ombUsQOnWwb3WC4YA_nvpdBtHi9FM&signed_in=true"></script>	
+	    <script type="text/javascript" src="<?php echo base_url('assets/js/markerwithlabel_packed.js') ?>"></script>
 		<!----start-top-nav-script---->
 		<script>
 			$(function() {
@@ -46,7 +50,7 @@
 		</script>
 		<!----//End-top-nav-script---->
 	</head>
-	<body>
+	<body onload="initMap()">
 		<div class="header-section">
 			<div id="home" class="header">
 				<div class="container">
@@ -70,9 +74,7 @@
 		
 	
 	<script>
-	// The following example creates complex markers to indicate beaches near
-	// Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
-	// to the base of the flagpole.
+
 	var latitude = Number('<?php echo $pack[0]["latitude"]?>');
 	var longitude = Number('<?php echo $pack[0]["longitude"]?>');
 	function initMap() {
@@ -316,17 +318,26 @@
 	    coords: [1, 1, 1, 20, 18, 20, 18, 1],
 	    type: 'poly'
 	  };
+
+     
 	  for (var i = 0; i < makan.length; i++) {
 	    var permakan = makan[i];
-	    var marker = new google.maps.Marker({
+	    var marker= new MarkerWithLabel({
 	      position: {lat: permakan[1], lng: permakan[2]},
 	      map: map,
 	      icon: image1,
 	      shape: shape,
-	      title: permakan[0],
-	      zIndex: permakan[3]
+	      title: "Makan",
+	      zIndex: permakan[3],
 	    });
+
+	 	var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + permakan[0] + "<br>" + "Latitude: " + permakan[1] + "<br>" + "longitude: " + permakan[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });   
 	  }
+
 	  for (var i = 0; i < rapat.length; i++) {
 	    var perrapat = rapat[i];
 	    var marker = new google.maps.Marker({
@@ -334,10 +345,17 @@
 	      map: map,
 	      icon: image2,
 	      shape: shape,
-	      title: perrapat[0],
+	      title: "Rapat",
 	      zIndex: perrapat[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + perrapat[0] + "<br>" + "Latitude: " + perrapat[1] + "<br>" + "longitude: " + perrapat[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < tidur.length; i++) {
 	    var pertidur = tidur[i];
 	    var marker = new google.maps.Marker({
@@ -345,10 +363,17 @@
 	      map: map,
 	      icon: image3,
 	      shape: shape,
-	      title: pertidur[0],
+	      title: "Tidur",
 	      zIndex: pertidur[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + pertidur[0] + "<br>" + "Latitude: " + pertidur[1] + "<br>" + "longitude: " + pertidur[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < mandi.length; i++) {
 	    var permandi = mandi[i];
 	    var marker = new google.maps.Marker({
@@ -356,10 +381,17 @@
 	      map: map,
 	      icon: image4,
 	      shape: shape,
-	      title: permandi[0],
+	      title: "Mandi",
 	      zIndex: permandi[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + permandi[0] + "<br>" + "Latitude: " + permandi[1] + "<br>" + "longitude: " + permandi[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < jalan.length; i++) {
 	    var perjalan = jalan[i];
 	    var marker = new google.maps.Marker({
@@ -367,10 +399,17 @@
 	      map: map,
 	      icon: image5,
 	      shape: shape,
-	      title: perjalan[0],
+	      title: "Jalan",
 	      zIndex: perjalan[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + perjalan[0] + "<br>" + "Latitude: " + perjalan[1] + "<br>" + "longitude: " + perjalan[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < berkendara.length; i++) {
 	    var perberkendara = berkendara[i];
 	    var marker = new google.maps.Marker({
@@ -378,10 +417,17 @@
 	      map: map,
 	      icon: image6,
 	      shape: shape,
-	      title: perberkendara[0],
+	      title: "Berkendara",
 	      zIndex: perberkendara[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + perberkendara[0] + "<br>" + "Latitude: " + perberkendara[1] + "<br>" + "longitude: " + perberkendara[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < romantic.length; i++) {
 	    var perromantic = romantic[i];
 	    var marker = new google.maps.Marker({
@@ -389,10 +435,17 @@
 	      map: map,
 	      icon: image7,
 	      shape: shape,
-	      title: perromantic[0],
+	      title: "Bukan buat jomblo",
 	      zIndex: perromantic[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + perromantic[0] + "<br>" + "Latitude: " + perromantic[1] + "<br>" + "longitude: " + perromantic[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < mendaki.length; i++) {
 	    var permendaki = mendaki[i];
 	    var marker = new google.maps.Marker({
@@ -400,10 +453,17 @@
 	      map: map,
 	      icon: image8,
 	      shape: shape,
-	      title: permendaki[0],
+	      title: "Mendaki",
 	      zIndex: permendaki[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + permendaki[0] + "<br>" + "Latitude: " + permendaki[1] + "<br>" + "longitude: " + permendaki[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < berselancar.length; i++) {
 	    var perberselancar = berselancar[i];
 	    var marker = new google.maps.Marker({
@@ -411,10 +471,17 @@
 	      map: map,
 	      icon: image9,
 	      shape: shape,
-	      title: perberselancar[0],
+	      title: "berselancar",
 	      zIndex: perberselancar[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + perberselancar[0] + "<br>" + "Latitude: " + perberselancar[1] + "<br>" + "longitude: " + perberselancar[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
+
 	  for (var i = 0; i < memancing.length; i++) {
 	    var permemancing = memancing[i];
 	    var marker = new google.maps.Marker({
@@ -422,15 +489,19 @@
 	      map: map,
 	      icon: image10,
 	      shape: shape,
-	      title: permemancing[0],
+	      title: "Memancing",
 	      zIndex: permemancing[3]
 	    });
+
+	    var iw1 = new google.maps.InfoWindow({
+       		content: "Waktu: " + permemancing[0] + "<br>" + "Latitude: " + permemancing[1] + "<br>" + "longitude: " + permemancing[2] 
+     	});
+     
+   		google.maps.event.addListener(marker, "click", function (e) { iw1.open(map, this); });
 	  }
 	}
 
 	    </script>
-	    <script async defer
-	        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGJ9ombUsQOnWwb3WC4YA_nvpdBtHi9FM&signed_in=true&callback=initMap"></script>	
 	</body>
 </html>
 
